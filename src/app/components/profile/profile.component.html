@@ -1,3 +1,13 @@
+<div class="page-header">
+  <h1>Search Github Profile</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <input type="text" class="form-control" [(ngModel)]="username" name="username" (keyup)="searchUser()">
+  </div>
+</div>
+
 <div *ngIf="user">
   <!--Show User Details-->
   <div class="page-header">
