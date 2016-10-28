@@ -1,3 +1,75 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+  <!--Show User Details-->
+  <div class="page-header">
+    <h2>{{txtTitleInfos}}</h2>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="{{user.avatar_url}}" alt="{{user.name}}" class="img-responsive img-center">
+          <br>
+          <a href="{{user.html_url}}" target="_blank" class="btn btn-info">{{txtViewProfile}}</a>
+        </div>
+        <div class="col-md-7">
+          <div class="stats pull-right">
+            <span class="label label-default">{{user.public_repos}} {{txtPublicRepositories}}</span>
+            <span class="label label-primary">{{user.public_gists}} {{txtPublicGists}}</span>
+            <span class="label label-success">{{user.followers}} {{txtFollowers}}</span>
+            <span class="label label-info">{{user.following}} {{txtFollowing}}</span>
+          </div>
+          <div class="clearfix"></div>
+          <h4>{{txtTitleBio}}</h4>
+          <p>{{user.bio}}</p>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{txtTitlePanelInfo}}</h3>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">{{user.name}}</span>
+                {{txtUser}}
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.location}}</span>
+                {{txtLocation}}
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.type}}</span>
+                {{txtType}}
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.created_at}}</span>
+                {{txtMemberSince}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Show User Repos-->
+  <div class="page-header">
+    <h2>{{txtTitleRepos}}</h2>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div *ngFor="let repo of repos">
+        <div class="row">
+          <div class="col-md-9">
+            <h4><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></h4>
+            <p>{{repo.description}}</p>
+          </div>
+          <div class="col-md-3">
+            <span class="label label-default">{{repo.watchers}} Watchers</span>
+            <span class="label label-primary">{{repo.forks}} Forks</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,15 +10,19 @@ export class GithubService {
   private client_secret = '147641ffdf6c47defa5f9b6935668f67819845d3';
 
   constructor(private _http: Http) {
-    console.log("github service ready");
+    console.log("Github Service Ready!");
     this.username = 'elanza';
 
   }
 
-  // Implementing metods and functions.
+  // Getting info from Github API.
 
   getUser(){
     return this._http.get('http://api.github.com/users/'+this.username+'?client_id='+this.client_id+'&client_secret='+this.client_secret).map(res => res.json());
   }
 
+  getRepos(){
+    return this._http.get('http://api.github.com/users/'+this.username+'/repos?client_id='+this.client_id+'&client_secret='+this.client_secret)
+      .map(res => res.json());
+  }
 }
